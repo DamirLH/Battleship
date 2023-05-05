@@ -58,27 +58,28 @@ class Player{
                 int tempX = 0, tempY = 0;
                 if (rotation == 1) {
                     tempX = i;
-                } else {
+                } else if (rotation==2){
                     tempY = i;
                 }
                 if (x + tempX + 1 < FIELD_LENGTH && x + tempX + 1 > 0) {
-                    if (battlefield[x + 1 + tempX][y + tempY] != 0) {//1=SHIP
+                    if (battlefield[x + 1 + tempX][y + tempY] != 0) {//1=SHIP || 0=SEA
+                        System.err.println("11");
                         return false;
                     }
                 }
                 if (x + tempX - 1 < FIELD_LENGTH && x + tempX - 1 > 0) {
-                    if (battlefield[x - 1 + tempX][y + tempY] != 0) {//1=SHIP
-                        return false;
+                    if (battlefield[x - 1 + tempX][y + tempY] != 0) {
+                        System.err.println("12"); return false;
                     }
                 }
                 if (y + tempY + 1 < FIELD_LENGTH && y + tempY + 1 > 0) {
-                    if (battlefield[x + tempX][y + 1 + tempY] != 0) {//1=SHIP
-                        return false;
+                    if (battlefield[x + tempX][y + 1 + tempY] != 0) {
+                        System.err.println("21");return false;
                     }
                 }
-                if (y - tempY - 1 < FIELD_LENGTH && y + tempX - 1 > 0) {
-                    if (battlefield[x + tempX][y - 1 + tempY] != 0) {//1=SHIP
-                        return false;
+                if (y + tempY - 1 < FIELD_LENGTH && y + tempX - 1 > 0 && y!=0) {
+                    if (battlefield[x + tempX][y - 1 + tempY] != 0) {
+                        System.err.println("22");return false;
                     }
                 }
             }
